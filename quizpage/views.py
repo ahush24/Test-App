@@ -17,8 +17,8 @@ def home(request):
         page_number = 1
     question = Exam.objects.filter(id = page_number)
 
-    # for q in question
-    question_count = 4
+ 
+    question_count = 10
     if page_number==question_count:
         context={"question":question,"next_page": min(question_count,page_number + 1), "prev_page": max(1, page_number - 1),"page":page_number}
     else:
@@ -37,9 +37,7 @@ def home(request):
             context={"question":question,"next_page": min(question_count,page_number + 1), "prev_page": max(1, page_number - 1),"wrong":"true","finish":"true","page":page_number}
     
     if request.GET.get("finish")=="true":
-        # print('yes i am here duhh...!!!')
         score = Response.objects.all().count()
-        # print(score)
         context={"score":score,"question_count":question_count}
         Response.objects.all().delete()
 
