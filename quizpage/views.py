@@ -1,5 +1,4 @@
 from django.shortcuts import render
-import requests
 from quizpage.models import Exam, Response
 
 # Create your views here.
